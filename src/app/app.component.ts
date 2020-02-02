@@ -14,21 +14,18 @@ export interface Post {
 export class AppComponent {
   posts: Post[] = [
     {
-      title: 'one',
-      text: '1'
-    },
-    {
-      title: 'two',
-      text: '2'
-    },
-    {
+      id: '3',
       title: 'three',
       text: '3'
     }
   ];
 
   updatePosts(post: Post) {
-    console.log('Post: ', post)
     this.posts.unshift(post);
+  }
+
+  removePost(id: number) {
+    console.log('id is remove: ', id);
+    this.posts = this.posts.filter(p => p.id !== id);
   }
 }
