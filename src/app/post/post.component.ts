@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, ContentChild, ElementRef, Input, OnInit} from '@angular/core';
 import {Post} from '../app.component';
 
 @Component({
@@ -8,4 +8,5 @@ import {Post} from '../app.component';
 })
 export class PostComponent {
   @Input('myPost') post: Post;
+  @ContentChild('info', {static: false}) infoRef: ElementRef;
 }
