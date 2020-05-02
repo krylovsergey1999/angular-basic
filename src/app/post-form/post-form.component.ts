@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Post} from '../app.component';
 
 @Component({
@@ -7,24 +7,24 @@ import {Post} from '../app.component';
   styleUrls: ['./post-form.component.scss']
 })
 export class PostFormComponent {
-  title: '';
-  text: '';
   @Output() onAdd: EventEmitter<Post> = new EventEmitter<Post>();
 
-  @ViewChild('titleInput', {static: false}) inputRef: ElementRef;
+  title = '';
+  text = '';
+
+  constructor() {
+  }
+
 
   addPost() {
-    if (this.text.trim() && this.title.trim()) {
+    if (this.title.trim() && this.text.trim()) {
       const post: Post = {
         title: this.title,
         text: this.text
       };
+      console.log('New post: ', post);
+      this.text = this.title = '';
       this.onAdd.emit(post);
-      this.title = this.text = '';
     }
-  }
-
-  focusTitle() {
-    this.inputRef.nativeElement.focus();
   }
 }

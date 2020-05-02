@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 
 export interface Post {
-  title: string,
-  text: string,
-  id?: any
+  title: string;
+  text: string;
+  id?: any;
 }
 
 @Component({
@@ -11,28 +11,27 @@ export interface Post {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   posts: Post[] = [
     {
-      id: '3',
-      title: 'three',
-      text: '3'
+      title: 'Victor',
+      text: '1',
+      id: '1'
+    },
+    {
+      title: 'Sergey',
+      text: '2',
+      id: '2'
+    },
+    {
+      title: 'Anna',
+      text: '3',
+      id: '3'
     }
   ];
 
   updatePosts(post: Post) {
+    console.log('Event: ', post);
     this.posts.unshift(post);
-  }
-
-  removePost(id: number) {
-    console.log('id is remove: ', id);
-    this.posts = this.posts.filter(p => p.id !== id);
-  }
-
-  ngOnInit(): void {
-    setTimeout(() => {
-      console.log('Timeout');
-      this.posts[0].title = 'Changes';
-    }, 5000);
   }
 }
