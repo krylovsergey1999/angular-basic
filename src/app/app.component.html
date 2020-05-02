@@ -1,20 +1,9 @@
 <div class="container">
-  <h1>Angular Components</h1>
-  <app-post-form
-    (onAdd)="updatePosts($event)"
-  ></app-post-form>
+  <h1>Hello</h1>
 
-  <hr>
-  <app-post
-    *ngFor="let el of posts"
-    [post]="el"
-    (onRemove)="removePost($event)"
-  >
-    <div #info>
-      <small *ngIf="el.text.length > 10; else short">Пост длинный</small>
-      <ng-template #short>
-        Пост короткий
-      </ng-template>
-    </div>
-  </app-post>
+  <p appStyle="red"
+     fontWeight="bold"
+     [dStyles]="{border: '1px solid blue' ,borderRadius: '5px'}"
+  >Lorem ipsum dolor sit amet.
+  </p>
 </div>
