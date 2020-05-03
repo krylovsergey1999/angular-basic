@@ -3,12 +3,16 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
-import {StyleDirective} from './directives/style.directive';
+import {MultByPipe} from './pipes/mult-by.pipe';
+import { ExMarksPipe } from './pipes/ex-marks.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StyleDirective
+    MultByPipe,
+    ExMarksPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -18,4 +22,5 @@ import {StyleDirective} from './directives/style.directive';
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }
