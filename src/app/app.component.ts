@@ -1,37 +1,25 @@
-import {Component, OnInit,} from '@angular/core';
-
-export interface Post {
-  title: string;
-  text: string;
-}
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  posts: Post[] = [
-    {
-      title: 'Beer',
-      text: 'Bad'
-    },
-    {
-      title: 'Bread',
-      text: 'With milk'
-    },
-    {
-      title: 'JS',
-      text: 'Hard'
-    },
-  ];
+export class AppComponent implements OnInit {
+  form: FormGroup;
 
-  search = '';
-
-  addPost() {
-    this.posts.unshift({
-      title: 'New',
-      text: 'Post'
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('',[Validators.minLength(3), Validators.required])
     });
   }
+
+  submit() {
+    console.log('Form: ', this.form);
+    const formData = {...this.form.value};
+    console.log('Form Data: ', formData);
+  }
 }
+
